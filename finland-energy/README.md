@@ -1,19 +1,26 @@
 # Finnish energy consumption
 
-Compare ordinary linear regression with Lasso regression to predict total energy consumption in Finland.
+Compare linear regression and Lasso regression on a small annual dataset from a machine-learning course project.
 
-## Notebook
+## Files and data
 
-[`energy_regression.ipynb`](energy_regression.ipynb) loads the data, fits both models and compares predictions using mean absolute error. The original split uses the first 11 rows for training and the following 3 rows for testing; Lasso uses `alpha=0.001`.
+- [energy_regression.ipynb](energy_regression.ipynb): data loading, model fitting and error comparison.
+- [energy_data.csv](energy_data.csv): the original 14-row table recovered from the coursework workspace, covering **2008–2021**. Values have not been changed.
 
-## Data
+The predictors are `Families`, `GDP Per Capita`, `Unemployment rate` and `Number of tourists`. The target column is labelled `Energy Consumption Total(TJ)`. `Year` is used to describe the split and is excluded from the model inputs.
 
-Place the original `energy_data.csv` beside the notebook. It must contain `Year`, `Energy Consumption Total(TJ)` and the numeric predictor columns used in the original assignment. The target is total consumption; `Year` and the target are excluded from predictors. The source dataset and its attribution were not present in the supplied notebook, so they must be confirmed before redistributing data.
+**Provenance:** the table came from the original Jupyter workspace (`notebooks/energy_data.csv`). Its original statistical sources, GDP currency basis and the exact scope of the energy measure have not been recovered. It should not be presented as a verified official series for Finland's total national energy use. No third-party open-data licence is asserted for this coursework table.
+
+## Method
+
+The original chronological split is retained: **2008–2018 for training (11 rows)** and **2019–2021 for testing (3 rows)**. Both models use the same four predictors; Lasso uses `alpha=0.001`. The notebook reports training R-squared and mean absolute error for training and test predictions.
 
 ## Interpretation
 
-The test set is very small. The split is based on row order and is only chronological if the CSV is ordered by year. Results from this experiment do not establish reliable future forecasting. Predictor scaling, time-aware validation and the possibility that predictors are components of total consumption should be examined before drawing stronger conclusions.
+Three test observations cannot establish robust forecasting performance. Predictors are unscaled, so Lasso's penalty depends on the variable units. The notebook illustrates a modelling workflow; stronger conclusions require verified source definitions, scaling and time-aware validation with substantially more observations.
 
-## Preparation notes
+## Validation and preparation
 
-The original model choices and split are retained. Score labels were corrected from “covariance” to training R-squared, and both models now report plain MAE. The original Lasso evaluation added an extra coefficient penalty to MAE; that term was removed to make prediction errors comparable. Outputs were cleared. The prepared notebook has not been rerun because the CSV was not supplied.
+The CSV was matched to this notebook and all Python cells passed syntax checks. A full end-to-end execution of this prepared copy has not been verified.
+
+The original model choices, data values and split are retained. Mislabelled “covariance” scores were renamed training R-squared. The Lasso prediction error now uses plain MAE without adding a coefficient penalty. Saved outputs are cleared so rerunning the notebook generates the results.
