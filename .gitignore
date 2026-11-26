@@ -1,0 +1,22 @@
+# Source and derived data remain local.
+*.csv
+*.tsv
+*.xlsx
+*.xls
+*.zip
+*.gz
+*.nii
+*.fif
+*.mat
+data/
+outputs/
+*.png
+*.jpg
+*.pdf
+# Local environments and notebook state
+.venv/
+venv/
+__pycache__/
+.ipynb_checkpoints/
+.env
+.env.*
