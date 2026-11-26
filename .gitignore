@@ -1,22 +1,26 @@
-# Source and derived data remain local.
-*.csv
-*.tsv
-*.xlsx
-*.xls
-*.zip
-*.gz
-*.nii
-*.fif
-*.mat
-data/
-outputs/
-*.png
-*.jpg
-*.pdf
-# Local environments and notebook state
+# Local environments and notebook checkpoints
 .venv/
 venv/
 __pycache__/
+*.pyc
 .ipynb_checkpoints/
+
+# Restricted health data and all derived participant-level files
+menstrual-health/*.csv
+menstrual-health/*.tsv
+menstrual-health/*.zip
+menstrual-health/*.parquet
+menstrual-health/*.png
+menstrual-health/*.jpg
+menstrual-health/data/
+menstrual-health/outputs/
+menstrual-health/results/
+
+# Local data archives, credentials and editor files
+*.zip
 .env
 .env.*
+*.pem
+*.key
+.DS_Store
+Thumbs.db
